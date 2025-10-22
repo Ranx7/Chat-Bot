@@ -1,10 +1,11 @@
-# chatbot.py
 from flask import Flask, request, jsonify, render_template
+from flask_cors import CORS
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.metrics.pairwise import cosine_similarity
 import json
 
 app = Flask(__name__)
+CORS(app)  # ✅ allows cross-domain requests (Vercel → Render)
 
 # Load your Q&A data
 with open("qa_data.json", "r") as f:
@@ -24,13 +25,6 @@ def chatbot_response(user_input):
         return "I'm not sure about that. Could you rephrase your question?"
     else:
         return qa_data[best_match_index]["answer"]
-
-# -------------------------
-# Flask routes
-# -------------------------
-@app.route("/")
-def home():
-    return render_template("index.html")
 
 @app.route("/ask", methods=["POST"])
 def ask():
