@@ -46,7 +46,7 @@ def corpus_answer(user_input):
 
 
 # ---------- Web Search (Mode 2) ----------
-SERPER_KEY = "YOUR_API_KEY_HERE"
+SERPER_KEY = "5c59a75a74a46741d93c6aace292354326697f27"
 
 def web_search(query):
     url = "https://google.serper.dev/search"
@@ -134,3 +134,4 @@ if __name__ == "__main__":
     app.run(debug=True)
 
 # made by yours truly ranx <3
+
